@@ -1,0 +1,28 @@
+<p><a href="<?php echo $this->url(array('controller'=>'index', 
+        'action'=>'add'));?>">Want to upload a new Job? Click this.</a></p>
+<table>
+<tr>
+    <th>Job No.</th>
+    <th>Title</th>
+    <th>
+     Short Description
+     </th>
+    <th>&nbsp;</th>
+</tr>
+<?php $temp=0; foreach($this->jobs as $job) : ?>
+
+<tr><td><?php echo ++$temp?></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'index', 
+            'action'=>'des', 'id'=>$job->id));?>"><?php echo $this->escape($job->title);?></a></td>
+    <td><div align="right" >
+     <?php echo $this->escape($job->shortd);?>
+     </div></td>
+    <td>
+        <a href="<?php echo $this->url(array('controller'=>'index', 
+            'action'=>'edit', 'id'=>$job->id));?>">Edit</a>
+        <a href="<?php echo $this->url(array('controller'=>'index', 
+            'action'=>'delete', 'id'=>$job->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

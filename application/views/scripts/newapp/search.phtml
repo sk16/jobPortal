@@ -1,0 +1,39 @@
+<?php 
+$this->title = "Search";
+$this->headTitle($this->title);
+echo $this->form ;
+?>
+<table>
+<tr><th>Result No.</th>
+    <th>Title</th>
+    <th>
+     Short-Description
+     </th>
+     <th>
+     Exp/Skills
+     </th>
+     <th>
+     Location
+     </th>
+    <th>&nbsp;</th>
+</tr>
+<?php if (!empty($this->jobs)): ?>
+<?php $temp=0; foreach($this->jobs as $job) : ?>
+<tr><td><?php echo ++$temp?></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'index', 
+            'action'=>'des', 'id'=>$job->pri));?>"><?php echo $this->escape($job->title);?></a></td>
+    <td><div align="right" >
+     <?php echo $this->escape($job->shortd);?>
+     </div></td>
+     <td><div align="center" >
+     <?php echo $this->escape($job->exp);?>
+     </div></td>
+    <td><div align="center" >
+     <?php echo $this->escape($job->location);?>
+     </div></td>
+</tr>
+<?php endforeach; ?>
+<?php else: ?>
+                <p class="error">No Results</p>
+            <?php endif; ?>
+</table>
